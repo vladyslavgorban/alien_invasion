@@ -37,6 +37,10 @@ class AlienInsavion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    # move ship right
+                    self.ship.rect.x += 1
 
     def _update_screen(self):
         """update screen"""
