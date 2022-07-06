@@ -20,12 +20,9 @@ class AlienInsavion:
         self.ship = Ship(self)
 
     def run_game(self):
-        """rum main game route"""
+        """rum main game loop"""
         while True:
-            # track mouse and keyboard behaviour
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            self._check_events()
 
             # renew screen in every loop
             self.screen.fill(self.settings.bg_color)
@@ -33,6 +30,12 @@ class AlienInsavion:
 
             # display last screen
             pygame.display.flip()
+
+    def _check_events(self):
+        """manage mouse and keyboard events"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
 
 if __name__ == '__main__':
     # create an instance and run a game
