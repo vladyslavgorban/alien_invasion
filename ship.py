@@ -9,7 +9,7 @@ class Ship():
         self.screen_rect = ai_game.screen.get_rect()
 
         # load ship picture, gat rectangle
-        self.image = pygame.image.load('images/ship2.bmp')
+        self.image = pygame.image.load('images/ship_2.bmp')
         self.rect = self.image.get_rect()
         # each new ship appears bottom of the screen
         self.rect.midbottom = self.screen_rect.midbottom
