@@ -3,6 +3,7 @@ import sys
 import pygame
 
 from settings import Settings
+from ship import Ship
 
 class AlienInsavion:
     """manage resources and game behavior class"""
@@ -16,6 +17,8 @@ class AlienInsavion:
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        self.ship = Ship(self)
+
     def run_game(self):
         """rum main game route"""
         while True:
@@ -26,6 +29,7 @@ class AlienInsavion:
 
             # renew screen in every loop
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
 
             # display last screen
             pygame.display.flip()
