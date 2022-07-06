@@ -23,19 +23,27 @@ class AlienInsavion:
         """rum main game loop"""
         while True:
             self._check_events()
+            self._update_screen()
 
-            # renew screen in every loop
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
+            # # renew screen in every loop
+            # self.screen.fill(self.settings.bg_color)
+            # self.ship.blitme()
 
-            # display last screen
-            pygame.display.flip()
+            # # display last screen
+            # pygame.display.flip()
 
     def _check_events(self):
         """manage mouse and keyboard events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+    def _update_screen(self):
+        """update screen"""
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
+
+        pygame.display.flip()
 
 if __name__ == '__main__':
     # create an instance and run a game
