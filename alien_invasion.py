@@ -16,9 +16,6 @@ class AlienInsavion:
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
-        # det default background color
-        self.bg_color = (230, 230, 230)
-
     def run_game(self):
         """rum main game route"""
         while True:
@@ -28,7 +25,7 @@ class AlienInsavion:
                     sys.exit()
 
             # renew screen in every loop
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             # display last screen
             pygame.display.flip()
