@@ -80,9 +80,20 @@ class AlienInsavion:
 
     def _create_fleet(self):
         """crate aliens fleet"""
-        # create an alien
+        # create an alien and calculate number of aliens in line
+        # space between aliens equals aline's width
         alien = Alien(self)
-        self.aliens.add(alien)
+        alien_width = alien.rect.width
+        available_space_x = self.settings.screen_width - (2 * alien_width)
+        number_aliens_x = available_space_x // (2 * alien_width)
+
+        # create first line of aliens
+        for alien_number in range(number_aliens_x):
+            # create alien and place it in the line
+            alien = Alien(self)
+            alien.x = alien_width + 2 * alien_width * alien_number
+            alien.rect.x = alien.x
+            self.aliens.add(alien)
 
     def _update_screen(self):
         """update screen"""
