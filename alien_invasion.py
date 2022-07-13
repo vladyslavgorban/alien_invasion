@@ -79,6 +79,10 @@ class AlienInsavion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+        self._check_bullet_allien_collisions()
+
+    def _check_bullet_allien_collisions(self):
+        """proceed collisions"""
         # check if alien shoot
         # if yes, remove bullet and alien
         collisions = pygame.sprite.groupcollide(
