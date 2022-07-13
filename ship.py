@@ -36,3 +36,8 @@ class Ship():
 
         #update rect attribure based on self.x
         self.rect.x = self.x
+
+    def center_ship(self):
+        """palce ship in the center of the bottom"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
