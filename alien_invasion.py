@@ -82,7 +82,13 @@ class AlienInsavion:
         # check if alien shoot
         # if yes, remove bullet and alien
         collisions = pygame.sprite.groupcollide(
-                    self.bullets, self.aliens, False, True)
+                    self.bullets, self.aliens, True, True)
+
+        # check if all aliens gone
+        if not self.aliens:
+            # delete all bullets and crate new aliens fleet
+            self.bullets.empty()
+            self._create_fleet()
         
     def _update_aliens(self):
         """
