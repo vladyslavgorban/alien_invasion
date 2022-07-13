@@ -33,12 +33,15 @@ class AlienInsavion:
         self._create_fleet()
 
     def run_game(self):
-        """rum main game loop"""
+        """run main game loop"""
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+
+            if self.stats.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
+            
             self._update_screen()
 
     def _check_events(self):
@@ -160,27 +163,31 @@ class AlienInsavion:
 
     def _ship_hit(self):
         """proceed ship is hit by alien"""
-        # reduce ships_left
-        self.stats.ship_left -= 1
+        if self.stats.ship_left > 0:
+            # reduce ships_left
+            self.stats.ship_left -= 1
 
-        # clean aliens and bullets
-        self.aliens.empty()
-        self.bullets.empty()
+            # clean aliens and bullets
+            self.aliens.empty()
+            self.bullets.empty()
 
-        # create new fleet and place ship in the middle
-        self._create_fleet()
-        self.ship.center_ship()
+            # create new fleet and place ship in the middle
+            self._create_fleet()
+            self.ship.center_ship()
 
-        # pause
-        sleep(1)
+            # pause
+            sleep(1)
+        else:
+            self.stats.game_active = False
 
     def _check_aliens_bottom(self):
         """check if aliens come to bottom of the screen"""
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
-            # the same as ship is hit
-            self._ship_hit()
-            break
+            if alien.rect.bottom >= screen_rect.bottom:
+                # the same as ship is hit
+                self._ship_hit()
+                break
 
     def _update_screen(self):
         """update screen"""
