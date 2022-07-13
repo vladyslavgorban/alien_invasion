@@ -78,6 +78,11 @@ class AlienInsavion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+
+        # check if alien shoot
+        # if yes, remove bullet and alien
+        collisions = pygame.sprite.groupcollide(
+                    self.bullets, self.aliens, False, True)
         
     def _update_aliens(self):
         """
@@ -88,7 +93,7 @@ class AlienInsavion:
         self.aliens.update()
 
     def _create_fleet(self):
-        """crate aliens fleet"""
+        """create aliens fleet"""
         # create an alien and calculate number of aliens in line
         # space between aliens equals aline's width
         alien = Alien(self)

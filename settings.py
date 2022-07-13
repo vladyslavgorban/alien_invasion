@@ -1,8 +1,8 @@
-class Settings():
+class Settings:
     """class for all settings in Alien Invasion"""
 
     def __init__(self):
-        """initializy game settings"""
+        """initialize game settings"""
         # screen parameters
         self.screen_width = 1024
         self.screen_height = 600
