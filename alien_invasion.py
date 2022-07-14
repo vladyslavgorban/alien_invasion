@@ -83,6 +83,8 @@ class AlienInsavion:
         """run new game if 'play' button pushed"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
+            # reset game settings
+            self.settings.initialize_dynamic_settings()
             self.start_game()
         
     def _check_keydown_events(self, event):
@@ -135,6 +137,7 @@ class AlienInsavion:
             # delete all bullets and crate new aliens fleet
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
         
     def _update_aliens(self):
         """
