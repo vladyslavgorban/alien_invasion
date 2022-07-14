@@ -76,6 +76,9 @@ class AlienInsavion:
             # create new fleet and place ship in the middle
             self._create_fleet()
             self.ship.center_ship()
+
+            # hide mouse pointer
+            pygame.mouse.set_visible(False)
         
     def _check_keydown_events(self, event):
         """react to key down"""
@@ -202,6 +205,7 @@ class AlienInsavion:
             sleep(1)
         else:
             self.stats.game_active = False
+            pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
         """check if aliens come to bottom of the screen"""
