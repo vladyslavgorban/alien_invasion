@@ -48,6 +48,24 @@ class AlienInsavion:
             
             self._update_screen()
 
+    def start_game(self):
+        """starts new game"""
+
+        # reset game sats
+        self.stats.reset_stats()
+        self.stats.game_active = True
+
+        # clean aliens and bullets
+        self.aliens.empty()
+        self.bullets.empty()
+
+        # create new fleet and place ship in the middle
+        self._create_fleet()
+        self.ship.center_ship()
+
+        # hide mouse pointer
+        pygame.mouse.set_visible(False)
+
     def _check_events(self):
         """manage mouse and keyboard events"""
         for event in pygame.event.get():
@@ -65,20 +83,7 @@ class AlienInsavion:
         """run new game if 'play' button pushed"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            # reset game sats
-            self.stats.reset_stats()
-            self.stats.game_active = True
-
-            # clean aliens and bullets
-            self.aliens.empty()
-            self.bullets.empty()
-
-            # create new fleet and place ship in the middle
-            self._create_fleet()
-            self.ship.center_ship()
-
-            # hide mouse pointer
-            pygame.mouse.set_visible(False)
+            self.start_game()
         
     def _check_keydown_events(self, event):
         """react to key down"""
@@ -90,6 +95,8 @@ class AlienInsavion:
             sys.exit()
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
+        elif event.key == pygame.K_p:
+            self.start_game()
 
     def _check_keyup_events(self, event):
         """react to key up"""
