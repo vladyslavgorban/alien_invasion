@@ -89,6 +89,7 @@ class AlienInsavion:
             # reset game settings
             self.settings.initialize_dynamic_settings()
             self.sb.prep_score()
+            self.sb.prep_level()
             self.start_game()
         
     def _check_keydown_events(self, event):
@@ -148,6 +149,10 @@ class AlienInsavion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # increase level
+            self.stats.level += 1
+            self.sb.prep_level()
         
     def _update_aliens(self):
         """
