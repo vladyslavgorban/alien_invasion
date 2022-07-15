@@ -87,6 +87,7 @@ class AlienInsavion:
         if button_clicked and not self.stats.game_active:
             # reset game settings
             self.settings.initialize_dynamic_settings()
+            self.sb.prep_score()
             self.start_game()
         
     def _check_keydown_events(self, event):
@@ -135,7 +136,8 @@ class AlienInsavion:
                     self.bullets, self.aliens, True, True)
 
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
 
         # check if all aliens gone
