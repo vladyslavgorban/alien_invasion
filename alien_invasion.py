@@ -90,6 +90,7 @@ class AlienInsavion:
             self.settings.initialize_dynamic_settings()
             self.sb.prep_score()
             self.sb.prep_level()
+            self.sb.prep_ships()
             self.start_game()
         
     def _check_keydown_events(self, event):
@@ -217,6 +218,7 @@ class AlienInsavion:
         if self.stats.ship_left > 0:
             # reduce ships_left
             self.stats.ship_left -= 1
+            self.sb.prep_ships()
 
             # clean aliens and bullets
             self.aliens.empty()
