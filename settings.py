@@ -19,7 +19,9 @@ class Settings:
 
         # aliens settings
         self.fleet_drop_speed = 50
-       
+
+        # file for high scores
+        self.filename = 'high_score.json'  
 
         # game speed up
         self.speedup_scale = 1.1

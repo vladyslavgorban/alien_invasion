@@ -37,7 +37,7 @@ class Scoreboard():
     
     def prep_high_score(self):
         """transform text of high score into image"""
-        high_score = round(self.stats.score)
+        high_score = round(self.stats.high_score)
         high_score_str = "{:,}".format(high_score)
 
         self.high_score_image = self.font.render(high_score_str, True, 

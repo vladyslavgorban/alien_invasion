@@ -1,3 +1,5 @@
+import json
+
 class GameStats():
     """log statistics of ai game"""
 
@@ -10,7 +12,8 @@ class GameStats():
         self.game_active = False
 
         # game record should not reset
-        self.high_score = 0
+        with open(self.settings.filename) as f:
+           self.high_score = json.load(f)
 
     def reset_stats(self):
         """reset statistics"""
